@@ -9,6 +9,6 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServerConfig {
-	private Integer port;
+public class SerializationConfig {
+	private String serializationMethod;
 }

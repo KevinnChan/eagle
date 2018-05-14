@@ -1,4 +1,4 @@
-package com.eagle.remoting.serialization;
+package com.eagle.common.serialization;
 
 public interface Serializable {
 	<T> byte[] serialize(T object);

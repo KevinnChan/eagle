@@ -1,4 +1,4 @@
-package com.eagle.common.bean;
+package com.eagle.rpc.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServerConfig {
-	private Integer port;
+public class RpcBean {
+	private String interfaceName;
+	private Object target;
 }

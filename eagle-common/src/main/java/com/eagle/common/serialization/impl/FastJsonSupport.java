@@ -1,10 +1,10 @@
-package com.eagle.remoting.serialization.impl;
+package com.eagle.common.serialization.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.eagle.remoting.serialization.Serializable;
+import com.eagle.common.serialization.Serializable;
 
 /**
  * motan<渣浪> fastjson 序列化

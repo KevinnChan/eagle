@@ -1,15 +1,16 @@
-package com.eagle.remoting.serialization.impl;
+package com.eagle.common.serialization.impl;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
-import com.eagle.remoting.serialization.Serializable;
-//import org.springframework.objenesis.Objenesis;
-//import org.springframework.objenesis.ObjenesisStd;
+import com.eagle.common.serialization.Serializable;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+//import org.springframework.objenesis.Objenesis;
+//import org.springframework.objenesis.ObjenesisStd;
 
 public class ProtoStuffSupport implements Serializable {
 

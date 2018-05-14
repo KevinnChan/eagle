@@ -8,14 +8,12 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-import javax.annotation.Resource;
 
 @Slf4j
 public class EagleJettyServer implements EagleServer {
 
 	private Server server;
 
-	@Resource
 	private ServerConfig serverConfig;
 
 	@Override
@@ -25,12 +23,10 @@ public class EagleJettyServer implements EagleServer {
 			throw new RuntimeException("ServerConfig is not initialized check your config please.");
 		}
 
-		//TODO validation of port 
-
 		try {
 			server = new Server(serverConfig.getPort());
 			ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
-			servletContextHandler.setContextPath("/*");
+			servletContextHandler.setContextPath("/eagle-rpc");
 			servletContextHandler.addServlet(new ServletHolder(new JettyServlet()), "/*");
 			server.setHandler(servletContextHandler);
 			server.start();
@@ -48,5 +44,9 @@ public class EagleJettyServer implements EagleServer {
 				log.error("Fail to stop jetty server cause: ", e);
 			}
 		}
+	}
+
+	public void setServerConfig(ServerConfig serverConfig) {
+		this.serverConfig = serverConfig;
 	}
 }
