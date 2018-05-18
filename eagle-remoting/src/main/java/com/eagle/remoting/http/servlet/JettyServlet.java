@@ -7,6 +7,7 @@ import com.eagle.common.serialization.SerializerEngine;
 import com.eagle.rpc.utils.RpcContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,11 @@ public class JettyServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+		if(!req.getMethod().equals("POST")){
+			throw new RuntimeException("Unsupported Request Method : " + req.getMethod() + ", POST Accept Only.");
+		}
+
 		long startTime = System.currentTimeMillis();
 		RpcResponse response = new RpcResponse();
 		try {
