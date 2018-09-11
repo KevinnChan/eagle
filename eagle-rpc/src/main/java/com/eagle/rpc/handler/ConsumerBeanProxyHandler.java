@@ -3,6 +3,7 @@ package com.eagle.rpc.handler;
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.bean.RpcResponse;
 import com.eagle.common.bean.SerializationConfig;
+import com.eagle.common.enums.SerializationEnum;
 import com.eagle.common.serialization.SerializerEngine;
 import com.eagle.rpc.utils.HttpUtils;
 import com.eagle.rpc.utils.ThreadPoolUtils;
@@ -20,9 +21,6 @@ import java.util.concurrent.Future;
 
 @Slf4j
 public class ConsumerBeanProxyHandler implements InvocationHandler {
-
-	@Resource
-	private SerializationConfig serializationConfig;
 
 	public <T> T getProxyObject(Class clz) {
 		return (T) Proxy.newProxyInstance(clz.getClassLoader(), new Class[]{clz}, this);
@@ -56,10 +54,10 @@ public class ConsumerBeanProxyHandler implements InvocationHandler {
 
 		log.info("远程请求开始：{}", request);
 
-		byte[] requestData = SerializerEngine.serialize(request, serializationConfig.getSerializationMethod());
+		byte[] requestData = SerializerEngine.serialize(request, SerializationEnum.FASTJSON);
 		String url = "http://127.0.0.1:9001/eagle-rpc";
 		byte[] responseData = HttpUtils.doPost(url, requestData);
-		RpcResponse rpcResponse = SerializerEngine.deserialize(responseData, RpcResponse.class, serializationConfig.getSerializationMethod());
+		RpcResponse rpcResponse = SerializerEngine.deserialize(responseData, RpcResponse.class, SerializationEnum.FASTJSON);
 
 		log.info("远程请求结束：{}", rpcResponse);
 

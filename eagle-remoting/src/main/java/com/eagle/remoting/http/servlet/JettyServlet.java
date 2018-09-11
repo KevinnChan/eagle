@@ -27,7 +27,7 @@ public class JettyServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-		if(!req.getMethod().equals("POST")){
+/*		if(!req.getMethod().equals("POST")){
 			throw new RuntimeException("Unsupported Request Method : " + req.getMethod() + ", POST Accept Only.");
 		}
 
@@ -59,6 +59,6 @@ public class JettyServlet extends HttpServlet {
 			log.error("Remoting invoked exception caused: ", e);
 		}
 
-		log.info("远程请求调用结束:[ " + response + " ], 耗时: [" + (System.currentTimeMillis() - startTime) + "ms]");
+		log.info("远程请求调用结束:[ " + response + " ], 耗时: [" + (System.currentTimeMillis() - startTime) + "ms]");*/
 	}
 }

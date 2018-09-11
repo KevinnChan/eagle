@@ -11,7 +11,6 @@ import org.springframework.beans.factory.InitializingBean;
 @Data
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class ConsumerBean extends RpcBean implements InitializingBean {
 
 	@Override

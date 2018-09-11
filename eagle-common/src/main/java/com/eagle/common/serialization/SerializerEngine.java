@@ -8,22 +8,22 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SerializerEngine {
-	private static final Map<String, Serializable> serializerEngine = new ConcurrentHashMap<>();
+	private static final Map<SerializationEnum, Serializable> serializerEngine = new ConcurrentHashMap<>();
 
 	static {
-		serializerEngine.put(SerializationEnum.FASTJSON.getName(), new FastJsonSupport());
-		serializerEngine.put(SerializationEnum.PROTOSTUFF.getName(), new ProtoStuffSupport());
+		serializerEngine.put(SerializationEnum.FASTJSON, new FastJsonSupport());
+		serializerEngine.put(SerializationEnum.PROTOSTUFF, new ProtoStuffSupport());
 	}
 
-	public static <T> byte[] serialize(T object, String type) {
+	public static <T> byte[] serialize(T object, SerializationEnum type) {
 		return getSerializableInstance(type).serialize(object);
 	}
 
-	public static <T> T deserialize(byte[] data, Class<T> clz, String type) {
+	public static <T> T deserialize(byte[] data, Class<T> clz, SerializationEnum type) {
 		return getSerializableInstance(type).deserialize(data, clz);
 	}
 
-	private static Serializable getSerializableInstance(String type) {
+	private static Serializable getSerializableInstance(SerializationEnum type) {
 		if (type != null && serializerEngine.containsKey(type)) {
 			return serializerEngine.get(type);
 		}
