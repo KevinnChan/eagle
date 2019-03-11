@@ -1,7 +1,6 @@
 package com.eagle.remoting.netty;
 
 import com.eagle.common.bean.RpcResponse;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class NettyClientHandler extends SimpleChannelInboundHandler<RpcResponse>{
+
 	@Override
 	public void channelReadComplete(ChannelHandlerContext channelHandlerContext) {
 		channelHandlerContext.flush();

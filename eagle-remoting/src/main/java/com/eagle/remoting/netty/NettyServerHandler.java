@@ -3,14 +3,10 @@ package com.eagle.remoting.netty;
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.bean.RpcResponse;
 import com.eagle.rpc.utils.RpcContext;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**

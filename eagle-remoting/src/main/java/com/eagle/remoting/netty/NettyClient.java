@@ -3,8 +3,6 @@ package com.eagle.remoting.netty;
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.enums.SerializationEnum;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
