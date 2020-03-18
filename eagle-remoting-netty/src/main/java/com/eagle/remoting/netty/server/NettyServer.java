@@ -2,8 +2,8 @@ package com.eagle.remoting.netty.server;
 
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.enums.SerializationEnum;
-import com.eagle.remoting.netty.codec.json.FastJsonDecoder;
-import com.eagle.remoting.netty.codec.json.FastJsonEncoder;
+import com.eagle.remoting.netty.codec.FastJsonDecoder;
+import com.eagle.remoting.netty.codec.FastJsonEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -34,21 +34,21 @@ public class NettyServer {
 			// 创建服务端服务启动类
 			ServerBootstrap b = new ServerBootstrap();
 			// 设置NIO线程组
-			b.group(bossGroup,workerGroup)
-			// 设置socketChannel 对应处理 JDK 类 ServerSocketChannel
-			.channel(NioServerSocketChannel.class)
-			// 设置TCP参数 连接请求最大队列长度
-			.option(ChannelOption.SO_BACKLOG,1024)
-			// 设置I/O事件处理类 用来处理消息的编码及我们的业务逻辑
-			.childHandler(new ChannelInitializer<NioSocketChannel>() {
-				@Override
-				protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-					// 参数为事件处理类
-					nioSocketChannel.pipeline().addLast(new FastJsonEncoder(SerializationEnum.FASTJSON));
-					nioSocketChannel.pipeline().addLast(new FastJsonDecoder(RpcRequest.class, SerializationEnum.FASTJSON));
-					nioSocketChannel.pipeline().addLast(new NettyServerHandler());
-				}
-			});
+			ServerBootstrap serverBootstrap = b.group(bossGroup, workerGroup)
+					// 设置socketChannel 对应处理 JDK 类 ServerSocketChannel
+					.channel(NioServerSocketChannel.class)
+					// 设置TCP参数 连接请求最大队列长度
+					.option(ChannelOption.SO_BACKLOG, 1024)
+					// 设置I/O事件处理类 用来处理消息的编码及我们的业务逻辑
+					.childHandler(new ChannelInitializer<NioSocketChannel>() {
+						@Override
+						protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
+							// 参数为事件处理类
+							nioSocketChannel.pipeline().addLast(new FastJsonEncoder(SerializationEnum.FASTJSON));
+							nioSocketChannel.pipeline().addLast(new FastJsonDecoder(RpcRequest.class, SerializationEnum.FASTJSON));
+							nioSocketChannel.pipeline().addLast(new NettyServerHandler());
+						}
+					});
 
 			//绑定端口 同步等待成功
 			ChannelFuture channelFuture = b.bind(port).sync();

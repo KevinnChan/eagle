@@ -2,8 +2,8 @@ package com.eagle.remoting.netty.client;
 
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.enums.SerializationEnum;
-import com.eagle.remoting.netty.codec.json.FastJsonDecoder;
-import com.eagle.remoting.netty.codec.json.FastJsonEncoder;
+import com.eagle.remoting.netty.codec.FastJsonDecoder;
+import com.eagle.remoting.netty.codec.FastJsonEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

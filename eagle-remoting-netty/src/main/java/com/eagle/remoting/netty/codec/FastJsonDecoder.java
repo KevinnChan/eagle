@@ -1,4 +1,4 @@
-package com.eagle.remoting.netty.codec.json;
+package com.eagle.remoting.netty.codec;
 
 import com.eagle.common.enums.SerializationEnum;
 import com.eagle.common.serialization.SerializerEngine;
