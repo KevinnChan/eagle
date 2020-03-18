@@ -83,7 +83,8 @@
 	</build>
 
 	<modules>
-		<module>eagle-remoting</module>
+		<module>eagle-remoting-jetty</module>
+		<module>eagle-remoting-netty</module>
         <module>eagle-common</module>
         <module>eagle-rpc</module>
         <module>eagle-registy</module>

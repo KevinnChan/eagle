@@ -1,4 +1,4 @@
-package com.eagle.remoting.netty;
+package com.eagle.remoting.netty.server;
 
 import com.eagle.common.bean.RpcRequest;
 import com.eagle.common.bean.RpcResponse;

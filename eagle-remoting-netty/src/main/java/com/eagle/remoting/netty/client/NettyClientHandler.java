@@ -1,4 +1,4 @@
-package com.eagle.remoting.netty;
+package com.eagle.remoting.netty.client;
 
 import com.eagle.common.bean.RpcResponse;
 import io.netty.channel.ChannelHandlerContext;
